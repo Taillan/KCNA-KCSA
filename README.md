@@ -50,5 +50,20 @@ Serverless Functions as a Service for Kubernetes.
 
 # KCSA
 
+## RessourceQuot vs Limit Quota
 RessourceQuota = Limit for namespace
 LimitRange = limit for pod ressource
+
+# Kyverno
+Kyverno is an admission controller that enable writing and enforcing policies as kubernetes ressource
+
+## securityContext
+### Pod level
+runAsUser, fsGroup, seLinuxOptions
+### Container level
+priviledged
+
+## Trivy
+Command : trivy image --severity HIGH, CRITICAL myapp:latest
+
+
