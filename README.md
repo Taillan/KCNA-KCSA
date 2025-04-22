@@ -61,12 +61,32 @@ LimitRange = limit for pod ressource
 Kyverno is an admission controller that enable writing and enforcing policies as kubernetes ressource
 
 ## securityContext
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo-4
+spec:
+  securityContext:
+    runAsUser: 1000
+  containers:
+  - name: sec-ctx-4
+    image: gcr.io/google-samples/hello-app:2.0
+    securityContext:
+      capabilities:
+        add: ["NET_ADMIN", "SYS_TIME"]
+```
+
 ### Pod level
 runAsUser, fsGroup, seLinuxOptions
 ### Container level
 priviledged
+###Linux capabilities
+capabilities.add
 
 ## Trivy
 Command : trivy image --severity HIGH, CRITICAL myapp:latest
+
+## 
 
 
