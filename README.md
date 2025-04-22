@@ -55,6 +55,17 @@ Serverless Functions as a Service for Kubernetes.
 
 # KCSA
 
+## Kubelet
+### debug-level
+Set the verbosity level to 4 by adding '--v=4' to the kubelet startup arguments
+
+### RessourceQuot vs Limit Quota
+RessourceQuota = Limit for namespace
+LimitRange = limit for pod ressource
+
+## Pod Security Standards
+Use a Pod Security Admission to enforce non-root user requirements
+
 ## RessourceQuot vs Limit Quota
 RessourceQuota = Limit for namespace
 LimitRange = limit for pod ressource
