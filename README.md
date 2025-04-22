@@ -2,7 +2,10 @@
 Yes I did KCNA after CKAD CKA and CKS
 
 # Ressources
+All Mocke exam csv necessary : https://github.com/PacktPublishing/Kubernetes-and-Cloud-Native-Associate-KCNA-with-Practice-Exams
+
 https://app.exampro.co KCNA Free tier have class and Exam
+
 ALl is there : https://notes.kaiwalyakoparkar.com/kcna/
 
 Select information for fields such as name, namespace or status of a Kubernetes object
