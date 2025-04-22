@@ -47,3 +47,8 @@ What are the six layers of the CNCF landscape?
 What is a fast serverless framework for Kubernetes with a focus on developer productivity and high performance?
 Fission
 Serverless Functions as a Service for Kubernetes.
+
+# KCSA
+
+RessourceQuota = Limit for namespace
+LimitRange = limit for pod ressource
