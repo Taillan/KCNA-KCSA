@@ -149,6 +149,11 @@ apt list --installed
 ### Microsoft Security Development Lifecycle (SDL) 
 The Microsoft Security Development Lifecycle (SDL) is a comprehensive framework that integrates security at every phase of software development, including explicit phases for requirements definition, threat modeling, mitigation strategies, and validation
 
+### Sysdig Secure
+Q: Which tool is commonly used for real-time compliance monitoring and alerting in Kubernetes environments?
+
+A:Sysdig Secure is a tool designed for real-time compliance monitoring, anomaly detection, and security enforcement in Kubernetes environments. It helps ensure that clusters adhere to security standards and best practices.
+
 ### NIST Cybersecurity Framework
 Q: Which compliance framework is primarily recognized for emphasizing continuous policy review and network traffic monitoring to enhance security in cloud environments?
 
