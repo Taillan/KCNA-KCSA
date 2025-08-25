@@ -146,6 +146,15 @@ apt list --installed
 
 ## Compliance and Security Frameworks
 
+### STRIDE
+**S**poofing
+**T**ampering
+**R**epudiation
+**I**nformation
+**D**isclosure
+**D**enial of Service
+**E**levation of Privileges
+
 ### Microsoft Security Development Lifecycle (SDL) 
 The Microsoft Security Development Lifecycle (SDL) is a comprehensive framework that integrates security at every phase of software development, including explicit phases for requirements definition, threat modeling, mitigation strategies, and validation
 
