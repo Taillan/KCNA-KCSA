@@ -24,6 +24,7 @@ Set the verbosity level to 4 by adding '--v=4' to the kubelet startup arguments
 ## Kubectl
 
 ### Command
+#### Easy
 Check the version of the Kubernetes API server
 ```bash
 kubectl version
@@ -49,6 +50,7 @@ detailed information including its configuration and status
 kubectl describe RESSOURCE
 ```
 
+#### No Easy
 Retrieve a list of all contexts in your kubeconfig file
 ```bash
 kubectl config get-contexts
@@ -59,6 +61,11 @@ Label a node
 kubectl label nodes NODE_NAME env=production
 ```
 
+Port-Forward
+```bash
+kubectl port-forward <pod-name> <local-port>:<pod-port>
+```
+
 Share the PID namespace in docker
 ```sh
 docker run --pid=container:container1
@@ -66,10 +73,41 @@ docker run --pid=container:container1
 
 ## Kube ressources
 
-## AppArmor
+### Service Account
+Prevents automatic mounting of the default ServiceAccount token
+```yaml
+automountServiceAccountToken: false
+```
+
+### Service
+  Service type:
+  - ClusterIP
+  - NodePort
+  - LoadBalancer
+  - ExternalName
+
+### AppArmor
 container.apparmor.security.beta.kubernetes.io/<nom-du-container>: 'localhost/<nom-du-profil>'
 
+### Ingress
+HTTP/HTTPS routing rules and integrate with Ingress controllers to expose services.
+
+### Audit policy rule
+```yaml
+  # Log the request body of configmap changes in kube-system.
+  - level: Request
+    resources:
+    - group: "" # core API group
+      resources: ["configmaps"]
+    # This rule only applies to resources in the "kube-system" namespace.
+    # The empty string "" can be used to select non-namespaced resources.
+    namespaces: ["kube-system"]
+```
+
 ### NetworkPolicies
+Macth all pod : 
+  Use empty ``podSelector: {}``
+
 ```yaml
 ---
 apiVersion: networking.k8s.io/v1
@@ -84,21 +122,20 @@ spec:
   - Ingress
 
 ```
-#### Allow all selector
-An empty podSelector {} matches all pods in the namespace, while omitting the field would make the policy ineffective.
 
-
-## Pod Security Standards
+### Pod Security Standards
 
 Use a Pod Security Admission to enforce non-root user requirements
-
-## Deployment
+#### Pod Security Admission Controller
+Pod Security Admission Controller is responsible for enforcing Pod Security Standards in Kubernetes
 
 ### RessourceQuot vs Limit Quota
 RessourceQuota = Limit for namespace
 LimitRange = limit for pod ressource
 
-### securityContext
+### Deployment
+
+#### securityContext
 
 ```yaml
 apiVersion: v1
@@ -120,15 +157,15 @@ spec:
 ```
 ``runAsNonRoot: true``
 
-### Pod level
+#### Pod level
 
 runAsUser, fsGroup, seLinuxOptions
 
-### Container level
+#### Container level
 
 priviledged
 
-### Linux capabilities
+#### Linux capabilities
 capabilities.add
 
 ## Tools
@@ -138,20 +175,27 @@ Command : trivy image --severity HIGH, CRITICAL myapp:latest
 ### Kyverno
 Kyverno is an admission controller that enable writing and enforcing policies as kubernetes ressource
 
+### Botkube
+Slack-based alerts for compliance and security events
+
 ## Linux Commands
 lists all installed packages
 ```bash
 apt list --installed
 ```
 
+Lists all processes currently listening on TCP and UDP ports
+```bash
+sudo netstat -tulpn
+```
+
 ## Compliance and Security Frameworks
 
 ### STRIDE
 **S**poofing
-**T**ampering
-**R**epudiation
-**I**nformation
-**D**isclosure
+**T**ampering                Malicious alterations
+**R**epudiation              Denial of an action or event
+**I**nformation Disclosure
 **D**enial of Service
 **E**levation of Privileges
 
