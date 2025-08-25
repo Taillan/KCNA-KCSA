@@ -8,6 +8,11 @@
  - "Deployment Controller",
  - "Service Account Controller"
 
+### kube-controller-manager
+- Node Controller
+- ReplicaSet Controller
+- Service Account Controller
+
 ### kube-apiserver
 The kube-apiserver acts as the front end of the control plane
 
@@ -77,6 +82,11 @@ Port-Forward
 kubectl port-forward <pod-name> <local-port>:<pod-port>
 ```
 
+Prevent scheduling
+```bash
+kubectl taint nodes <node-name> key=value:NoSchedule
+```
+
 Share the PID namespace in docker
 ```sh
 docker run --pid=container:container1
@@ -99,7 +109,7 @@ CNI who support Network Policies:
 
 ### Service
   Service type:
-  - ClusterIP
+  - **ClusterIP**   Default
   - NodePort
   - LoadBalancer
   - ExternalName
@@ -146,6 +156,12 @@ spec:
 ### Pod Security Standards
 
 Use a Pod Security Admission to enforce non-root user requirements
+- 'runAsNonRoot: true' setting enforces that the container must run as a non-root user
+- 'runAsUser: 0' explicitly sets the user to root
+- 'runAsGroup: 0' sets the group ID but doesn't enforce non-root user.
+- 'allowPrivilegeEscalation: false' prevents privilege escalation but does not enforce non-root user.
+- 'privileged: false' disables privileged mode but does not guarantee a non-root user.
+
 #### Pod Security Admission Controller
 Pod Security Admission Controller is responsible for enforcing Pod Security Standards in Kubernetes
 
@@ -231,12 +247,12 @@ Three levels:
 Attempt to create a pod that violates the PSA policy and observe the outcome
 
 ### STRIDE
-**S**poofing
-**T**ampering                Malicious alterations
-**R**epudiation              Denial of an action or event
-**I**nformation Disclosure
-**D**enial of Service
-**E**levation of Privileges
+**S**poofing                  Identity
+**T**ampering                 Data integrity
+**R**epudiation               Denial of an action or event
+**I**nformation Disclosure    Confidentiality
+**D**enial of Service         Availability
+**E**levation of Privileges   Authorization
 
 ### Microsoft Security Development Lifecycle (SDL) 
 The Microsoft Security Development Lifecycle (SDL) is a comprehensive framework that integrates security at every phase of software development, including explicit phases for requirements definition, threat modeling, mitigation strategies, and validation
