@@ -16,6 +16,12 @@ To enable audit logging in Kubernetes, you must create an audit policy file, spe
 - Add '--audit-policy-file' flag to API server
 - Specify '--audit-log-path' in the API server configuration
 
+### ImagePolicyWebhook 
+```yaml
+--enable-admission-plugins=ImagePolicyWebhook
+```
+--admission-control => **Deprecated**
+
 ## Kubelet
 
 ## debug-level
@@ -169,6 +175,11 @@ priviledged
 capabilities.add
 
 ## Tools
+
+### Docker
+verify the integrity and authenticity of a container image
+A digital signature, public key, and verification tool
+
 ### Trivy
 Command : trivy image --severity HIGH, CRITICAL myapp:latest
 
@@ -208,6 +219,12 @@ Q: Which tool is commonly used for real-time compliance monitoring and alerting 
 A:Sysdig Secure is a tool designed for real-time compliance monitoring, anomaly detection, and security enforcement in Kubernetes environments. It helps ensure that clusters adhere to security standards and best practices.
 
 ### NIST Cybersecurity Framework
+NIST SP 800-53 Rev. 5 ecurity and privacy controls specifically for federal information systems
+NIST SP 800-190 focuses on cloud computing
+NIST SP 800-63 deals with digital identity guidelines
+NIST SP 800-171 provides guidelines for protecting controlled unclassified information in nonfederal systems
+NIST SP 800-30 is about risk management
+
 Q: Which compliance framework is primarily recognized for emphasizing continuous policy review and network traffic monitoring to enhance security in cloud environments?
 
 A: The NIST Cybersecurity Framework is widely adopted for managing cybersecurity risks and emphasizes continuous monitoring, including ongoing policy review and network traffic analysis, to effectively manage and mitigate risks in cloud and other environments. SOC 1 Type II focuses on financial controls, ISO/IEC 27017 provides guidelines for cloud security controls but does not emphasize continuous monitoring to the same extent, FedRAMP is a U.S. government program for cloud security authorization, and COBIT is a governance framework for IT management rather than specific continuous monitoring practices.
