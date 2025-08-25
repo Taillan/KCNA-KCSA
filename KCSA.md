@@ -2,6 +2,11 @@
 # KCSA
 
 ## The control plane
+ - "Node Controller",
+ - "Endpoint Controller",
+ - "Ingress Controller",
+ - "Deployment Controller",
+ - "Service Account Controller"
 
 ### kube-apiserver
 The kube-apiserver acts as the front end of the control plane
@@ -85,6 +90,13 @@ Prevents automatic mounting of the default ServiceAccount token
 automountServiceAccountToken: false
 ```
 
+### CNI 
+CNI who support Network Policies:
+- Calico
+- Weave Net
+- AWS VPC CNI
+- Cilium
+
 ### Service
   Service type:
   - ClusterIP
@@ -93,7 +105,9 @@ automountServiceAccountToken: false
   - ExternalName
 
 ### AppArmor
-container.apparmor.security.beta.kubernetes.io/<nom-du-container>: 'localhost/<nom-du-profil>'
+Two methode:
+1. **Annotations**: Anotate all the container : container.apparmor.security.beta.kubernetes.io/<nom-du-container>: 'localhost/<nom-du-profil>'
+2. **securityContext**: User the `appArmorProfile` field
 
 ### Ingress
 HTTP/HTTPS routing rules and integrate with Ingress controllers to expose services.
@@ -201,6 +215,20 @@ sudo netstat -tulpn
 ```
 
 ## Compliance and Security Frameworks
+
+### Supply chain risk
+NSA/CISA Kubernetes Hardening Guidance
+
+### Pod Security Admission (PSA) 
+Three levels:
+| Level      | Description |
+| ---------- | ----------- |
+| Privileged | Allows the most permissions |
+| Baseline   | Moderate security posture suitable for most applications |
+| Restricted | Strictest security controls |
+
+** How to try it **
+Attempt to create a pod that violates the PSA policy and observe the outcome
 
 ### STRIDE
 **S**poofing
