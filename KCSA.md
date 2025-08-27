@@ -247,12 +247,12 @@ Three levels:
 Attempt to create a pod that violates the PSA policy and observe the outcome
 
 ### STRIDE
-**S**poofing                  Identity
-**T**ampering                 Data integrity
-**R**epudiation               Denial of an action or event
-**I**nformation Disclosure    Confidentiality
-**D**enial of Service         Availability
-**E**levation of Privileges   Authorization
+- **S**poofing                  Identity
+- **T**ampering                 Data integrity
+- **R**epudiation               Denial of an action or event
+- **I**nformation Disclosure    Confidentiality
+- **D**enial of Service         Availability
+- **E**levation of Privileges   Authorization
 
 ### Microsoft Security Development Lifecycle (SDL) 
 The Microsoft Security Development Lifecycle (SDL) is a comprehensive framework that integrates security at every phase of software development, including explicit phases for requirements definition, threat modeling, mitigation strategies, and validation
